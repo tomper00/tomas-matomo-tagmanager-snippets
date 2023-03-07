@@ -8,13 +8,29 @@ Will clean you urls for consisten Matomo Data.
 - Make URLS lowercase
 - Remove trailing slashes
 
-**Remove all unknows url parameters we will keep:**
-mtm_ & utm_
-You can also specify a list of allowed URL parameters like s or category in the script 
+**Eamples**  
+|  Before |  -> | After  |
+|----------|-------------|-----------|
+|/my-url/ | -> |/my-url  |
+|/My-url | -> |/my-url  |
+|/my-url?random=123 | -> |/my-url  |
+|/my-url?utm_campaign=my_campaign&random=123 | -> |/my-url?utm_campaign=my_campaign |
+
+
+
+**Remove all unknows url parameters we will keep:**  
+mtm_ & utm_  
+
+In the beginning of the script there is an array where you can define the variables you want to allow
+```
+var keep = ["s,category"];
+```
+Normally you add search variables here and potentially other variables that you want Matomo to recieve.
+
 
 # clickElemParentClass.js 
-This script will return the class of the parent of the element from the clickElemet
-For example
+This script will return the class of the parent of the element from the clickElemet  
+For example:  
 ```
 
 <div id="parent" class="return this">
