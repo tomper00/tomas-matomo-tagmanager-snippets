@@ -12,5 +12,18 @@ Will clean you urls for consisten Matomo Data.
 mtm_ & utm_
 You can also specify a list of allowed URL parameters like s or category in the script 
 
+# clickElemParentClass.js 
+This script will return the class of the parent of the element from the clickElemet
+For example
+<div id="parent" class="return this">
+  <button>ClickElement</button>
+</div>  
 
+# clickElemParentCustomAttribute.js 
+
+This script will return the class of the parent of the element from the clickElemet
+For example
+<div id="parent" aria-expanded="return this">
+  <button>ClickElement</button>
+</div>  
 
