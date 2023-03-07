@@ -35,9 +35,9 @@ For example
 ```
 
 # Add / remove cookie consent with Matomo Tag Manager
-This is the 2 Custom HTML Tags to use:
-cookieConsentGiven.html 
-cookieConsentForget.html
+This is the 2 Custom HTML Tags to use:  
+**cookieConsentGiven.html**  
+**cookieConsentForget.html**  
 
 Implement them using a trigger that checks for the consent cookie written from your CMP solution.  
 For example if you have a cookie named cookieConsent that contains a text Analytics=true. 
