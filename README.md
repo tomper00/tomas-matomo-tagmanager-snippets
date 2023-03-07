@@ -5,8 +5,8 @@ If you want more tools and better help with Matomo, get Digitalists Matomo SaaS 
 
 # customURL.js 
 Will clean you urls for consisten Matomo Data.
-Make URLS lowercase
-Remove trailing slashes
+- Make URLS lowercase
+- Remove trailing slashes
 
 **Remove all unknows url parameters we will keep:**
 mtm_ & utm_
