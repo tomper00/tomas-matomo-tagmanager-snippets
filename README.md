@@ -1,5 +1,5 @@
-# tomas-matomo-tagmanager-snippets
-A repo that contains some Javascripts that will help you with custom TagManagement tasks
+# Tomas matomo tagmanager snippets
+A repo that contains some Javascripts that will help you with custom TagManagement tasks for Matomo.
 
 If you want more tools and better help with Matomo, get Digitalists Matomo SaaS we have even more tracking tools in place within our Matomo installations!
 
