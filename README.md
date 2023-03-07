@@ -15,15 +15,22 @@ You can also specify a list of allowed URL parameters like s or category in the 
 # clickElemParentClass.js 
 This script will return the class of the parent of the element from the clickElemet
 For example
+```
+
 <div id="parent" class="return this">
   <button>ClickElement</button>
-</div>  
+</div>
+```
+
 
 # clickElemParentCustomAttribute.js 
 
 This script will return the class of the parent of the element from the clickElemet
 For example
+```
+
 <div id="parent" aria-expanded="return this">
   <button>ClickElement</button>
 </div>  
+```
 
