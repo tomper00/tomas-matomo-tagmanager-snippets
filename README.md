@@ -39,19 +39,27 @@ This is the 2 Custom HTML Tags to use:
 cookieConsentGiven.html 
 cookieConsentForget.html
 
-Implement them using a trigger that checks for the consent cookie written from your CMP solution.
-<br>
-For example if you have a cookie named cookieConsent that contains a text Analytics=true
-<br>
-You first crate a variable named cookieConsent of type cookie that reads the cookieConsent cookie.
-<br>
-The trick here is to set a default value of this variable to notSet
-<br>
-Also create anothe variable named mtm_cookie_consent (reading the cookie mtm_cookie_consent) 
-<br>
-also with a default value of notSet
-<br>
-In your trigger you then check:<br>
-cookieConsent != notSet<br>
-&&<br>
-matomo_cookie_consent == notSet<br>
+Implement them using a trigger that checks for the consent cookie written from your CMP solution.  
+For example if you have a cookie named cookieConsent that contains a text Analytics=true. 
+
+You first crate a variable named **cookieConsent** of type cookie that reads the cookieConsent cookie.  
+The trick here is to set a default value of this variable to notSet.  
+
+Also create anothe variable named **mtm_cookie_consent** (reading the cookie mtm_cookie_consent)   
+also with a default value of notSet.  
+In your trigger **setCookieConstent** you then check: 
+**cookieConsent** contains Analytics=true  
+&&  
+**matomo_cookie_consent** == notSet  
+
+Finally create a CustomHTMl tag named cookieConsentGiven (use the code inte file cookieConsentGiven.html)
+and use the trigger above **setCookieConstent** 
+
+You can also create a reverse trigger **removeCookieConstent**
+In your trigger **removeCookieConstent** you then check: 
+**cookieConsent** does contains Analytics=true  
+&&  
+**matomo_cookie_consent** != notSet  
+
+Finally create a CustomHTMl tag named cookieConsentForget (use the code inte file cookieConsentForget.html)
+and use the trigger above **removeCookieConstent** 
