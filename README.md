@@ -88,3 +88,12 @@ In your trigger **removeCookieConstent** you then check:
 Finally create a CustomHTMl tag named cookieConsentForget (use the code inte file cookieConsentForget.html)
 and use the trigger above **removeCookieConstent** 
 
+# customSearchTag.html
+
+1. First make sure you are not getting search variables from URL with pageviews.  
+2. Set up a trigger that detects Search
+3. Set up variables that contains searchKeywork, searchCategory & searchCount (use Javascript if they are loaded dynamically)
+4. Set up a Custom HTML Tag with my example code in customSearchTag.html 
+
+**Optionally**: Disable std pageviews for serach page and just initiate the TagManager on the search page
+
