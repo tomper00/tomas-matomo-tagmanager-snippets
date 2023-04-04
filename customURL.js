@@ -23,9 +23,9 @@ function () {
       var separator = "&"; 
       var item = part.split("=");
       var par = decodeURIComponent(item[0]);
-      console.log(par);
+      //console.log(par);
       var val = decodeURIComponent(item[1]);
-      console.log(val);
+      //console.log(val);
 
       if(val == undefined || val == "undefined")
           val = "";
