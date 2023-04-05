@@ -47,7 +47,9 @@ function () {
      }
     //End foreach
     });
-
+    
+    if(newQuery.charAt(0) == "&")
+             newQuery = "?" + newQuery.substr(1);
     if(newQuery != "")
      customSearch = "?" + newQuery;
 
