@@ -1,7 +1,18 @@
-function () { 
-    if(MatomoTagManager.dataLayer.get("event").match("mtm.AllElementsClick|mtm.AllLinksClick") != null &&
-    MatomoTagManager.dataLayer.get('mtm.clickElement').parentElement != undefined) {
-        return MatomoTagManager.dataLayer.get('mtm.clickElement').parentElement.className;
+function () {
+  var event = MatomoTagManager.dataLayer.get("event");
+  var clickElement = MatomoTagManager.dataLayer.get("mtm.clickElement");
+
+  if (typeof clickElement === "undefined") {
+    return "";
+  }
+
+  if (event && (event.indexOf("mtm.AllElementsClick") !== -1 || event.indexOf("mtm.AllLinksClick") !== -1) && typeof clickElement.parentElement !== "undefined") {
+    var parentElement = clickElement.parentElement;
+    var parentClass = parentElement.getAttribute("data-parent-class");
+    if (parentClass) {
+      return parentClass;
     }
-    else return "";
+  }
+
+  return "";
 }
