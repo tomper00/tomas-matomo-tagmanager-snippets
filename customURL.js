@@ -1,62 +1,35 @@
-function () { 
-
+function () {
   var customURL = window.location.pathname;
+  var customSearch = window.location.search;
+  var customHash = window.location.hash;
 
-   //List of url params to keep (we will always keep utm_* & mtm_*)
-   var keep = ["s"];
+  // Remove trailing slash and hash
+  customURL = customURL.replace(/\/$/, "").replace(/#.*$/, "");
 
-  //Remove trailing slash
-  customURL = customURL.replace(/\/$/, "");
-  customSearch = window.location.search;
-
-  //Force lowercase
+  // Force lowercase
   customURL = customURL.toLowerCase();
-  var newQuery = "";
- 
-  //Add search again after removing other url params
-  if(window.location.search != null) {
-     customSearch = customSearch.toLowerCase();
-     //Remove search
-     customSearch = customSearch.replace("?","");
-    
-    customSearch.split("&").forEach(function(part) {  
-      var separator = "&"; 
-      var item = part.split("=");
-      var par = decodeURIComponent(item[0]);
-      //console.log(par);
-      var val = decodeURIComponent(item[1]);
-      //console.log(val);
+  customSearch = customSearch.toLowerCase();
+  customHash = customHash.toLowerCase();
 
-      if(val == undefined || val == "undefined")
-          val = "";
-      //Check against campaign params
-      if(par.startsWith("mtm_") || par.startsWith("utm_")) {
-        if(val == undefined || val == "undefined")
-         newQuery += separator + par;
-        else
-          newQuery += separator + par + "=" + val;
-      }
-    //Check against keep param list
-    for(i=0;i<keep.length;i++) {
-          if(par == keep[i] ) {
-            if(val == undefined || val == "undefined")
-               newQuery += separator + par;
-             else
-               newQuery += separator + par + "=" + val;            
-          }
-     }
-    //End foreach
-    });
-    
-    if(newQuery.charAt(0) == "&")
-             newQuery = "?" + newQuery.substr(1);
-    if(newQuery != "")
-     customSearch = "?" + newQuery;
+  // List of url params to keep (we will always keep utm_* & mtm_*)
+  var keep = ["s"];
 
-    customURL = customURL+newQuery;
+  // Create a new query string with only the specified parameters
+  var newQueryParams = [];
+  (customSearch + customHash).slice(1).split('&').forEach(function(part) {
+    var item = part.split('=');
+    var paramKey = decodeURIComponent(item[0]);
+    var paramValue = decodeURIComponent(item[1] || '');
+    if (paramKey.startsWith('mtm_') || paramKey.startsWith('utm_') || keep.includes(paramKey)) {
+      newQueryParams.push(paramKey + '=' + paramValue);
+    }
+  });
 
+  // Rebuild the URL with the cleaned path and query parameters
+  var cleanedURL = customURL;
+  if (newQueryParams.length > 0) {
+    cleanedURL += '?' + newQueryParams.join('&');
   }
 
-  return customURL; 
-
+  return cleanedURL;
 }
