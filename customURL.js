@@ -3,6 +3,11 @@ function () {
   var customSearch = window.location.search;
   var customHash = window.location.hash;
 
+  
+  // List of url params to keep (we will always keep utm_* & mtm_*) 
+  // For example to track Google ads you need to add gclid 
+  var keep = ["s"];
+  
   // Remove trailing slash and hash
   customURL = customURL.replace(/\/$/, "").replace(/#.*$/, "");
 
@@ -11,8 +16,6 @@ function () {
   customSearch = customSearch.toLowerCase();
   customHash = customHash.toLowerCase();
 
-  // List of url params to keep (we will always keep utm_* & mtm_*)
-  var keep = ["s"];
 
   // Create a new query string with only the specified parameters
   var newQueryParams = [];
