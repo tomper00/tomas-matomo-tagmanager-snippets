@@ -8,7 +8,7 @@ function () {
 
   if (event && (event.indexOf("mtm.AllElementsClick") !== -1 || event.indexOf("mtm.AllLinksClick") !== -1) && typeof clickElement.parentElement !== "undefined") {
     var parentElement = clickElement.parentElement;
-    var parentClass = parentElement.getAttribute("data-parent-class");
+    var parentClass = parentElement.className;
     if (parentClass) {
       return parentClass;
     }
