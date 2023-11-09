@@ -23,7 +23,7 @@ mtm_ & utm_
 
 In the beginning of the script there is an array where you can define the variables you want to allow
 ```
-var keep = ["s,category"];
+var keep = ["s","category"];
 ```
 Normally you add search variables here and potentially other variables that you want Matomo to recieve.
 
