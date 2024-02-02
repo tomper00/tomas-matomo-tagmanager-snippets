@@ -6,7 +6,8 @@ function () {
   
   // List of url params to keep (we will always keep utm_* & mtm_*) 
   // For example to track Google ads you need to add gclid 
-  //   var keep = ["s","q","aaa"]; 
+  // var keep = ["s","q","aaa"]; 
+  // If you want to allow Fabebook or Google params you need to add fbclid & gclid
   var keep = ["s","q"];
   
   // Remove trailing slash and hash
