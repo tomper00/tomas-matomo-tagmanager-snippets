@@ -1,0 +1,10 @@
+function () { 
+  var regex = /mtm\.(AllElementsClick|AllLinksClick)/;
+
+  if (MatomoTagManager.dataLayer.get("event").match(regex)  &&
+    MatomoTagManager.dataLayer.get('mtm.clickElement').previousElementSibling.innerText != null) {
+    return MatomoTagManager.dataLayer.get('mtm.clickElement').previousElementSibling.innerText;
+  } else {
+    return null;
+  }
+}
