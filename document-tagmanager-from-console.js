@@ -2,6 +2,8 @@
  * Generates a CSV file containing information about Matomo Tag Manager tags, triggers, and custom dimensions.
  * This function extracts data from the Matomo Tag Manager container and saves it to a CSV file.
  * It's useful for auditing and documenting your Matomo Tag Manager setup.
+ * Just copy & paste the code into the console and execute.
+ * It will generate a csv file containing the sites tracking
  */
 function logMatomoTagsAndTriggers() {
     if (!window.MatomoTagManager || !window.MatomoTagManager.containers || window.MatomoTagManager.containers.length === 0) {
