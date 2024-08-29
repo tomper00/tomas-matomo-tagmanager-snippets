@@ -55,6 +55,7 @@ script.onload = function() {
                     return JSON.stringify(value);
                 }
             }
+            // Return the full string without truncation
             return value;
         }
 
@@ -138,9 +139,13 @@ script.onload = function() {
                     let description = '';
 
                     if (type === 'CustomJsFunction') {
-                        description = dim.value.parameters.jsFunction.substring(0, 50) + '...';
+                        // Capture the full function without truncation
+                        description = dim.value.parameters.jsFunction;
                     } else if (type === 'DomElement') {
                         description = `Selector: ${dim.value.parameters.cssSelector || dim.value.parameters.elementId}`;
+                    } else {
+                        // For other types, stringify the entire value object
+                        description = JSON.stringify(dim.value);
                     }
 
                     dimensionsSheet.push([index, name, type, description]);
