@@ -1,9 +1,9 @@
-document.addEventListener("DOMContentLoaded", function () {
+(function () {
   let timeSpentOnPage = 0; // Time in seconds
   let hasScrolledPast50 = false;
   let eventLogged = false; // Ensure event is logged only once
-
-  // Scroll event listener
+  
+  // Function to check scroll depth
   function checkScrollDepth() {
     const scrollPosition = window.scrollY + window.innerHeight;
     const pageHeight = document.documentElement.scrollHeight;
@@ -40,4 +40,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Add event listener to track scrolling
   window.addEventListener("scroll", checkScrollDepth);
-});
+})();
