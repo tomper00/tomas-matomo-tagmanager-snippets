@@ -1,43 +1,43 @@
-(function () {
-  let timeSpentOnPage = 0; // Time in seconds
-  let hasScrolledPast50 = false;
-  let eventLogged = false; // Ensure event is logged only once
-  
-  // Function to check scroll depth
-  function checkScrollDepth() {
-    const scrollPosition = window.scrollY + window.innerHeight;
-    const pageHeight = document.documentElement.scrollHeight;
+<script>
+let timeOnPage = 0; // Time in seconds
+    let scrollDepth50Reached = false; // Flag to track if 50% scroll depth is reached
+    let conditionsLogged = false; // To ensure logging happens only once
 
-    // Check if the user has scrolled more than 50% of the page
-    if (scrollPosition >= pageHeight / 2) {
-      hasScrolledPast50 = true;
+    // Function to check scroll depth
+    function checkScrollDepth() {
+        const scrollPosition = window.scrollY + window.innerHeight; // Current visible bottom of the screen
+        const pageHeight = document.documentElement.scrollHeight;  // Total page height
+
+        // Check if user has scrolled more than 50% of the total page height
+        if (scrollPosition >= 0.5 * pageHeight) {
+            scrollDepth50Reached = true;
+        }
+
+        // Log to console if conditions are met
+        checkConditionsAndLog();
     }
 
-    // Check conditions and log the event
-    logEventIfConditionsMet();
-  }
+    // Function to track time spent on the page
+    const timeTracker = setInterval(function () {
+        timeOnPage += 1; // Increment time every second
+        checkConditionsAndLog();
 
-  // Time tracking (update every second)
-  const timeTracker = setInterval(function () {
-    timeSpentOnPage += 1;
-    logEventIfConditionsMet();
+        // If conditions are logged, stop tracking time
+        if (conditionsLogged) {
+            clearInterval(timeTracker); // Stop the timer
+            window.removeEventListener("scroll", checkScrollDepth); // Remove scroll listener
+        }
+    }, 1000);
 
-    // Stop timer after 10 seconds, if conditions are already met
-    if (eventLogged) {
-      clearInterval(timeTracker);
+    // Function to log the message if both conditions are met
+    function checkConditionsAndLog() {
+        if (timeOnPage >= 10 && scrollDepth50Reached && !conditionsLogged) {
+            console.log("Conditions met: User spent more than 10 seconds on page and scrolled past 50%");
+            _mtm.trackEvent("EngegedPageview", document.title, window.location.pathname);
+            conditionsLogged = true;
+        }
     }
-  }, 1000);
 
-  // Function to log the event if both conditions are met
-  function logEventIfConditionsMet() {
-    if (!eventLogged && timeSpentOnPage > 10 && hasScrolledPast50) {
-      console.log("User spent more than 10 seconds AND scrolled past 50% of the page.");
-      eventLogged = true; // Ensure this only logs once
-
-      // You can also trigger other actions here if desired.
-    }
-  }
-
-  // Add event listener to track scrolling
-  window.addEventListener("scroll", checkScrollDepth);
-})();
+    // Add an event listener for scrolling
+    window.addEventListener("scroll", checkScrollDepth);
+</script>
