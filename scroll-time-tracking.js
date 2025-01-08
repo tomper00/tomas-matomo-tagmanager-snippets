@@ -33,7 +33,7 @@ let timeOnPage = 0; // Time in seconds
     function checkConditionsAndLog() {
         if (timeOnPage >= 10 && scrollDepth50Reached && !conditionsLogged) {
             console.log("Conditions met: User spent more than 10 seconds on page and scrolled past 50%");
-            _mtm.trackEvent("EngegedPageview", document.title, window.location.pathname);
+            _paq.push(['trackEvent', 'EngagedPageview', document.title, window.location.pathname]);
             conditionsLogged = true;
         }
     }
